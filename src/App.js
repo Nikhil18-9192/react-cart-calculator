@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { useEffect, useContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import Home from "./components/Home";
+import Cart from "./components/Cart";
+import axios from "axios";
+import globalContext from "./components/Context/Createcontext";
 
 function App() {
+  const { dispatch } = useContext(globalContext);
+  const getProducts = async () => {
+    await axios.get("https://fakestoreapi.com/products").then((res) => {
+      dispatch({
+        type: "SET_PRODUCTS",
+        payload: res.data,
+      });
+    });
+  };
+  useEffect(() => {
+    getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </div>
   );
 }
