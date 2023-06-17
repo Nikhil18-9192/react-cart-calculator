@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 function Navigation() {
   const location = useLocation();
@@ -11,7 +11,9 @@ function Navigation() {
   return (
     <div className="navigation_container">
       <div className="logo">
-        <h1>Shopping App</h1>
+        <h1>
+          <Link to="/">Shopping App</Link>
+        </h1>
       </div>
       <div className="nav_item">
         {menuItems.map((item, index) => (
