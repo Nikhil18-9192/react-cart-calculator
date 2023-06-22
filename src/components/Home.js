@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import globalContext from "./Context/Createcontext";
+import { AiFillStar } from "react-icons/ai";
 function Home() {
   const {state, dispatch} = useContext(globalContext);
   console.log(state)
@@ -8,6 +9,9 @@ function Home() {
     <div className="product_container">
         {products.map((product) => (
           <div className="product" key={product.id}>
+            <div className="rating">
+              <span><AiFillStar />{product.rating.rate}</span>
+            </div>
             <img src={product.image} alt={product.title} />
             <div className="info">
             <p className="name">{product.title}</p>

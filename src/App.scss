@@ -50,6 +50,7 @@
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 20px;
         .product{
+            position: relative;
             width: 220px;
             height: 280px;
             padding: 12px;
@@ -58,6 +59,19 @@
             margin: 20px;
             display: flex;
             flex-direction: column;
+            .rating{
+                position: absolute;
+                span{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: pink;
+                    padding: 2px 5px;
+                    font-size: 14px;
+                    color: midnightblue;
+                    border-radius: 5px;
+                }
+            }
             img{
                 width: 100px;
                 height: 150px;
